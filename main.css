@@ -3,23 +3,52 @@
   visibility: hidden;
 } */
 
+.navigationBar {
+  font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
+}
 .card {
   text-align: center;
+  font-family: 'EB Garamond', serif;
+  font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 .card-header {
-  font-weight: bold;
+  font-weight: em;
   font-size: 2rem;
   color: cadetblue ;
+  font-family: 'EB Garamond', serif;
+  font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 .card-title {
   font-weight: bold;
   font-size: 20px;
+  font-family: 'EB Garamond', serif;
+  font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
+}
+
+.card-text {
+  font-weight: bold;
 }
 
 #sortButton {
   text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 .houses {

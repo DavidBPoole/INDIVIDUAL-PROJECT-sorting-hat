@@ -49,20 +49,30 @@ const revealForm = (divId, htmlToRender) => {
   formDiv.innerHTML = htmlToRender;
 };
 
+// Form below includes name input validation throwing an error message if blank. All styling was added directly into the html to be rendered since CSS is seemingly unable to catch the element tags.
 let formString = "";
 formString += `<form id="nameForm">
 <div class="mb-3">
   <label for="student-name" class="form-name"></label>
-  <input type="name" class="form-control" id="exampleStudentName" style="max-width:25%; margin:auto" placeholder="Enter First Year's Name" aria-describedby="studentName">
+  <input type="text" class="form-control" id="validation" value="" required style="max-width:25%; margin:auto; font=font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive;" placeholder="Enter First Year's Name" aria-describedby="studentName">
   <div id="emailHelp" class="form-text"></div>
 </div>
 
-<button type="submit" class="row d-flex justify-content-center align-content-center"  class="sortFilterButton" id="sortButton" style="margin: auto; background-color: rgb(0, 128, 255); color: white; margin-bottom: 10px; border-color: rgb(0, 128, 255); border-radius: 5px">Sort</button>
+<button type="submit" class="row d-flex justify-content-center align-content-center"  class="sortFilterButton" id="sortButton" style="margin: auto; background-color: rgb(0, 128, 255); color: white; margin-bottom: 10px; border-color: rgb(0, 128, 255); border-radius: 5px; ">Sort</button>
 </form>
 
-<div class="houseBorder" style="border: 10px solid darkgrey">
-  <h3 id="filterHeader" style="text-align:center; font-size: 20px; margin-top: 2rem">Filter Students</h3>
-  <div class="btn-group" class="houses" style="display:flex; margin-left: 50px; margin-right: 50px; margin-bottom: 10px" role="group" aria-label="Basic mixed styles example">
+<div class="houseBorder" style="border: 10px solid darkgrey; margin: 10px">
+  <h3 id="filterHeader" style="text-align:center; font-size: 20px; font=font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive; margin-top: 2rem">Filter Students</h3>
+  <div class="btn-group" class="houses" style="display:flex; justify-content: center; margin-left: 50px; margin-right: 50px; margin-bottom: 10px; font=font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive;" role="group" aria-label="Basic mixed styles example">
     <button type="button" class="btn btn-secondary">All</button>
     <button type="button" class="btn btn-danger">Gryffindor</button>
     <button type="button" class="btn btn-warning">Hufflepuff</button>
@@ -75,7 +85,7 @@ showSort.addEventListener('click', (e) => {
   revealForm("#studentForm", formString);
 });
 
-// Console log to reveal sort button works (I guess this doesnt work because the button being tested for a click doesnt render until called with the prior button - I don't see why it wouldnt work if you click it after it's already rendered?...)
+// Console log to reveal sort button works (I guess this doesnt work because the button being tested for a click doesnt render until called with the prior button - I don't see why it wouldn't work if you click it after it's already rendered?..)
 // function sortAssignor(event) {
 //   console.log('Student Assignment Button Clicked');
 // }
