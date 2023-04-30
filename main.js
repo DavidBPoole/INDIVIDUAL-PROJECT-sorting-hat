@@ -53,20 +53,22 @@ let formString = "";
 formString += `<form id="nameForm">
 <div class="mb-3">
   <label for="student-name" class="form-name"></label>
-  <input type="name" class="form-control" id="exampleStudentName" style="max-width:20%; margin:auto" placeholder="Enter First Year's Name" aria-describedby="studentName">
+  <input type="name" class="form-control" id="exampleStudentName" style="max-width:25%; margin:auto" placeholder="Enter First Year's Name" aria-describedby="studentName">
   <div id="emailHelp" class="form-text"></div>
 </div>
 
-<button type="submit" class="row d-flex justify-content-center align-content-center" class="btn btn-primary" class="sortFilterButton" id="sortButton" style="margin: auto">Sort</button>
+<button type="submit" class="row d-flex justify-content-center align-content-center"  class="sortFilterButton" id="sortButton" style="margin: auto; background-color: rgb(0, 128, 255); color: white; margin-bottom: 10px; border-color: rgb(0, 128, 255); border-radius: 5px">Sort</button>
 </form>
 
-<h3 id="filterHeader" style="text-align:center; font-size: 20px; margin-top: 2rem">Filter Students</h3>
-<div class="btn-group" class="houses" style="display:flex; margin-left: 50px; margin-right: 50px" role="group" aria-label="Basic mixed styles example">
-  <button type="button" class="btn btn-secondary">All</button>
-  <button type="button" class="btn btn-danger">Gryffindor</button>
-  <button type="button" class="btn btn-warning">Hufflepuff</button>
-  <button type="button" class="btn btn-primary">Ravenclaw</button>
-  <button type="button" class="btn btn-success">Slytherin</button>
+<div class="houseBorder" style="border: 10px solid darkgrey">
+  <h3 id="filterHeader" style="text-align:center; font-size: 20px; margin-top: 2rem">Filter Students</h3>
+  <div class="btn-group" class="houses" style="display:flex; margin-left: 50px; margin-right: 50px; margin-bottom: 10px" role="group" aria-label="Basic mixed styles example">
+    <button type="button" class="btn btn-secondary">All</button>
+    <button type="button" class="btn btn-danger">Gryffindor</button>
+    <button type="button" class="btn btn-warning">Hufflepuff</button>
+    <button type="button" class="btn btn-primary">Ravenclaw</button>
+    <button type="button" class="btn btn-success">Slytherin</button>
+  </div>
 </div>`
 
 showSort.addEventListener('click', (e) => {
