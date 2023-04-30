@@ -1,5 +1,37 @@
 console.log("DOES ANYTHING WORK?")
 
+// Reference student list:
+const students = [
+  {
+    id: 1,
+    // color: "exampleColor",
+    teamName: "exampleTeam",
+    name: "Harry Potter",
+    // expelButton: button,
+  },
+  {
+    id: 2,
+    // color: "exampleColor",
+    teamName: "exampleTeam",
+    name: "Hermione Granger",
+    // expelButton: button,
+  },
+  {
+    id: 3,
+    // color: "exampleColor",
+    teamName: "exampleTeam",
+    name: "Ron Weasley",
+    // expelButton: button,
+  },
+  {
+    id: 4,
+    // color: "exampleColor",
+    teamName: "exampleTeam",
+    name: "Draco Malfoy",
+    // expelButton: button,
+  },
+];
+
 // Console log to reveal form button works:
 // 1 hour to setup console log on click
 function accessForm(event) {
@@ -10,7 +42,7 @@ showForm.addEventListener('click', accessForm);
 
 //Function to enable student name form visibility functionality:
 // 6 hours to complete this one step
-const sort = document.querySelector('#showForm');
+const showSort = document.querySelector('#showForm');
 
 const revealForm = (divId, htmlToRender) => {
   const formDiv = document.querySelector(divId);
@@ -21,50 +53,38 @@ let formString = "";
 formString += `<form id="nameForm">
 <div class="mb-3">
   <label for="student-name" class="form-name"></label>
-  <input type="name" class="form-control" id="exampleStudentName" placeholder="Enter First Year's Name" aria-describedby="studentName">
+  <input type="name" class="form-control" id="exampleStudentName" style="max-width:20%; margin:auto" placeholder="Enter First Year's Name" aria-describedby="studentName">
   <div id="emailHelp" class="form-text"></div>
 </div>
-<button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
-</form>`
 
-sort.addEventListener('click', (e) => {
-  revealForm("#form", formString);
+<button type="submit" class="row d-flex justify-content-center align-content-center" class="btn btn-primary" class="sortFilterButton" id="sortButton" style="margin: auto">Sort</button>
+</form>
+
+<h3 id="filterHeader" style="text-align:center; font-size: 20px; margin-top: 2rem">Filter Students</h3>
+<div class="btn-group" class="houses" style="display:flex; margin-left: 50px; margin-right: 50px" role="group" aria-label="Basic mixed styles example">
+  <button type="button" class="btn btn-secondary">All</button>
+  <button type="button" class="btn btn-danger">Gryffindor</button>
+  <button type="button" class="btn btn-warning">Hufflepuff</button>
+  <button type="button" class="btn btn-primary">Ravenclaw</button>
+  <button type="button" class="btn btn-success">Slytherin</button>
+</div>`
+
+showSort.addEventListener('click', (e) => {
+  revealForm("#studentForm", formString);
 });
+
+// Console log to reveal sort button works (I guess this doesnt work because the button being tested for a click doesnt render until called with the prior button - I don't see why it wouldnt work if you click it after it's already rendered?...)
+// function sortAssignor(event) {
+//   console.log('Student Assignment Button Clicked');
+// }
+// const showAssignment = document.querySelector("#sortButton");
+// sortButton.addEventListener('click', sortAssignor);
+
+// const sortSubmitButton = document.querySelector("#submitStudent")
+
 
 // Reset code for name form:
 // form.reset();
-
-//Reference student list:
-// const students = [
-//   {
-//     id: 1,
-//     // color: "exampleColor",
-//     teamName: "exampleTeam",
-//     name: "Harry Potter",
-//     expelButton: button,
-//   },
-//   {
-//     id: 2,
-//     // color: "exampleColor",
-//     teamName: "exampleTeam",
-//     name: "Hermione Granger",
-//     expelButton: button,
-//   },
-//   {
-//     id: 3,
-//     // color: "exampleColor",
-//     teamName: "exampleTeam",
-//     name: "Ron Weasley",
-//     expelButton: button,
-//   },
-//   {
-//     id: 4,
-//     // color: "exampleColor",
-//     teamName: "exampleTeam",
-//     name: "Draco Malfoy",
-//     expelButton: button,
-//   },
-// ];
 
 // const targetingApp = document.querySelector("#name-form");
 // console.log(targetingApp);
