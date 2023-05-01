@@ -65,3 +65,36 @@
   background-color: gold;
   margin-bottom: 50px;
 } */
+
+.card-container {
+  border: 10px solid darkgrey;
+  /* display: inline-block; */
+  margin: 5px;
+  padding-top: 20px;
+  /* max-width: 100%; */
+}
+
+#studentCards {
+  display: inline-block;
+  border: 1px solid darkgrey;
+  margin: 1%;
+  max-width: 50%;
+}
+
+#expelledCards {
+  background-color: black;
+  display: inline-block;
+  border: 1px solid darkgrey;
+  margin: 1%;
+  max-width: 50%;
+}
+
+.first-year-house {
+  display: flex;
+  justify-content: left;
+}
+
+.expelled {
+  display: flex;
+  justify-content: right;
+}

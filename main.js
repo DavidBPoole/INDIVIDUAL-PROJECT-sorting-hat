@@ -127,7 +127,54 @@ showSortForm.addEventListener('click', (e) => {
   revealSortForm("#studentSortForm", sortFormString);
 });
 
-//CURRENT CODE LINE BREAK
+const showStudentCards = document.querySelector('#sortButton');
+const revealStudentCards = (divId, htmlToRender) => {
+  const formDiv = document.querySelector(divId);
+  formDiv.innerHTML = htmlToRender;
+};
+
+let studentCardString = "";
+for (const student of students) {
+  studentCardString += `<div class="card mb-3" style="display: inline-block; max-width: 50%">
+  <div class="row g-0">
+    <div class="col-md-4">
+    </div>
+      <div class="card-body">
+        <p class="card-text">${student.name}</p>
+        <p class="card-text">${student.house}</p>
+        <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+renderToDom("#studentCards", studentCardString);
+};
+
+const showExpelledCards = document.querySelector('#sortButton');
+const revealExpelledCards = (divId, htmlToRender) => {
+  const formDiv = document.querySelector(divId);
+  formDiv.innerHTML = htmlToRender;
+};
+
+let expelledCardsString = "";
+for (const student of students) {
+  expelledCardsString += `<div class="card mb-3" style="display: inline-block">
+  <div class="row g-0">
+    <div class="col-md-4">
+    </div>
+      <div class="card-body">
+        <p class="card-text">${student.name}</p>
+        <p class="card-text">${student.house}</p>
+        <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+renderToDom("#expelledCards", expelledCardsString);
+};
+
+
+//******* CURRENT CODE LINE BREAK - NO ACTIVE CODE BELOW THIS LINE ********
 
 
 // Console log to reveal sort button works (I guess this doesnt work because the button being tested for a click doesnt render until called with the prior button - I don't see why it wouldn't work if you click it after it's already rendered?..)
