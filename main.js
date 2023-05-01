@@ -1,57 +1,99 @@
-console.log("DOES ANYTHING WORK?")
+console.log("IF YOU DONT SEE THIS THEN SOMETHING BROKE")
 
 // Reference student list:
 const students = [
   {
     id: 1,
-    // color: "exampleColor",
-    teamName: "exampleTeam",
     name: "Harry Potter",
-    // expelButton: button,
+    house: "Griffyndor"
   },
   {
     id: 2,
-    // color: "exampleColor",
-    teamName: "exampleTeam",
-    name: "Hermione Granger",
-    // expelButton: button,
+    name: "Cho Chang",
+    house: "Ravenclaw"
   },
   {
     id: 3,
-    // color: "exampleColor",
-    teamName: "exampleTeam",
-    name: "Ron Weasley",
-    // expelButton: button,
+    name: "Cedric Diggory",
+    house: "Hufflepuff"
   },
   {
     id: 4,
-    // color: "exampleColor",
-    teamName: "exampleTeam",
     name: "Draco Malfoy",
-    // expelButton: button,
+    house: "Slytherin"
   },
 ];
 
-// Console log to reveal form button works:
+// Master DOM Function:
+const renderToDom = (divId, html) => {
+  const selectedDiv = document.querySelector(divId);
+  selectedDiv.innerHTML = html;
+}
+
+// Home welcome message rendered to DOM upon page load:
+const welcome = () => {
+  let welcomeString = `<div class="navigationBar">
+  <nav class="navbar bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Sorting Hat</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Students</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Expelled</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          Hogwarts Class 2023-2024
+        </span>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="Introduction">
+  <div class="card">
+    <div class="card-header">
+      Welcome to Hogwarts School of Wizardry
+    </div>
+    <div class="card-body-greeting" style="border: 10px solid darkgrey; margin: 10px">
+      <h5 class="card-title">Assignment System</h5>
+      <p class="card-text">Welcome aspiring students! Please click the button below to begin the initation and House assignment process..</p>
+      <a href="#" class="btn btn-primary" id="showForm" style="margin-bottom: 10px">Access Sorting Hat</a>
+    </div>
+  </div>
+</div>`;
+renderToDom('#welcome', welcomeString);
+};
+welcome();
+
+// FORM BUTTON CLICK console log test:
 // 1 hour to setup console log on click
-function accessForm(event) {
+const showFormButton = document.querySelector("#showForm");
+showFormButton.addEventListener('click', accessSortForm);
+
+function accessSortForm(event) {
   console.log('Reveal Form Button Clicked');
 }
-const showForm = document.querySelector("#showForm");
-showForm.addEventListener('click', accessForm);
 
-//Function to enable student name form visibility functionality:
-// 6 hours to complete this one step
-const showSort = document.querySelector('#showForm');
-
-const revealForm = (divId, htmlToRender) => {
+//Function to enable student name form event visibility functionality:
+// 6 hours to complete this one step.
+const showSortForm = document.querySelector('#showForm');
+const revealSortForm = (divId, htmlToRender) => {
   const formDiv = document.querySelector(divId);
   formDiv.innerHTML = htmlToRender;
 };
 
-// Form below includes name input validation throwing an error message if blank. All styling was added directly into the html to be rendered since CSS is seemingly unable to catch the element tags.
-let formString = "";
-formString += `<form id="nameForm">
+// Form below includes name input validation throwing an error message if blank. All styling was added directly into the html to be rendered since CSS is seemingly unable to catch the element tags rendered to the DOM after initial page load DOM rendering.
+let sortFormString = "";
+sortFormString += `<form id="nameForm">
 <div class="mb-3">
   <label for="student-name" class="form-name"></label>
   <input type="text" class="form-control" id="validation" value="" required style="max-width:25%; margin:auto; font=font-family: 'Jost', sans-serif;
@@ -81,19 +123,24 @@ formString += `<form id="nameForm">
   </div>
 </div>`
 
-showSort.addEventListener('click', (e) => {
-  revealForm("#studentForm", formString);
+showSortForm.addEventListener('click', (e) => {
+  revealSortForm("#studentSortForm", sortFormString);
 });
 
-// Console log to reveal sort button works (I guess this doesnt work because the button being tested for a click doesnt render until called with the prior button - I don't see why it wouldn't work if you click it after it's already rendered?..)
-// function sortAssignor(event) {
-//   console.log('Student Assignment Button Clicked');
-// }
-// const showAssignment = document.querySelector("#sortButton");
-// sortButton.addEventListener('click', sortAssignor);
+//CURRENT CODE LINE BREAK
 
+
+// Console log to reveal sort button works (I guess this doesnt work because the button being tested for a click doesnt render until called with the prior button - I don't see why it wouldn't work if you click it after it's already rendered?..)
+// const showSortAssignment = document.querySelector("#sortButton");
+// showSortAssignment.addEventListener('click', sortAssignor);
+
+// function sortAssignor(event) {
+//   console.log('Student Sort Assignment Button Clicked');
+// };
 // const sortSubmitButton = document.querySelector("#submitStudent")
 
+
+// CODE BLOCK NOTES TO ASSIST IN PROJECT:
 
 // Reset code for name form:
 // form.reset();
