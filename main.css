@@ -75,6 +75,7 @@
 }
 
 #studentCards {
+  background-color: white;
   display: inline-block;
   border: 1px solid darkgrey;
   margin: 1%;
@@ -98,3 +99,59 @@
   display: flex;
   justify-content: right;
 }
+
+/* .container-max-widths {
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+}; */
+
+.container-group {
+  min-height: 300px;
+  border: 1px solid darkgrey;
+  margin: 3rem;
+}
+
+.firstYears {
+  border: 1px solid darkgrey;
+  /* min-height: 300px; */
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+#firstYearsTitle {
+  color: green;
+}
+
+.voldArmy {
+  border: 1px solid darkgrey;
+  /* min-height: 300px; */
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+#voldemortArmy {
+  text-align: center;
+  color: darkred;
+}
+
+.float-container {
+  border: 3px solid #fff;
+  padding: 20px;
+}
+
+.float-child {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  border: 5px solid darkgrey;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background-color: beige;;
+}  

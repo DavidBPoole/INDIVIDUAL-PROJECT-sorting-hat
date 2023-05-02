@@ -1,11 +1,10 @@
-console.log("IF YOU DONT SEE THIS THEN SOMETHING BROKE")
-
+// Created STUDENT ARRAYS - REQUIRE 2 CATEGORIES:
 // Reference student list:
 const students = [
   {
     id: 1,
     name: "Harry Potter",
-    house: "Griffyndor"
+    house: "Gryffindor"
   },
   {
     id: 2,
@@ -24,13 +23,15 @@ const students = [
   },
 ];
 
-// Master DOM Function:
-const renderToDom = (divId, html) => {
-  const selectedDiv = document.querySelector(divId);
-  selectedDiv.innerHTML = html;
-}
+const expelledStudents = [];
 
-// Home welcome message rendered to DOM upon page load:
+//****** MASTER RENDER TO DOM FUNCTION *********
+const renderToDom = (divId, htmlToRender) => {
+  const selectedDiv = document.querySelector(divId);
+  selectedDiv.innerHTML = htmlToRender;
+};
+
+//******** HOME PAGE WELCOME MESSAGE - Renders on load *******
 const welcome = () => {
   let welcomeString = `<div class="navigationBar">
   <nav class="navbar bg-primary" data-bs-theme="dark">
@@ -70,28 +71,31 @@ const welcome = () => {
     </div>
   </div>
 </div>`;
-renderToDom('#welcome', welcomeString);
-};
-welcome();
+  renderToDom("#welcome", welcomeString);
+}
+welcome()
 
-// FORM BUTTON CLICK console log test:
-// 1 hour to setup console log on click
+//  ******** FORM BUTTON CONSOLE CLICK TEST ************
 const showFormButton = document.querySelector("#showForm");
 showFormButton.addEventListener('click', accessSortForm);
 
 function accessSortForm(event) {
-  console.log('Reveal Form Button Clicked');
+  console.log('Form Button Clicked');
 }
 
-//Function to enable student name form event visibility functionality:
-// 6 hours to complete this one step.
+// ****** UNHIDE SORT FORM FUNCTION *******
 const showSortForm = document.querySelector('#showForm');
 const revealSortForm = (divId, htmlToRender) => {
   const formDiv = document.querySelector(divId);
   formDiv.innerHTML = htmlToRender;
 };
 
-// Form below includes name input validation throwing an error message if blank. All styling was added directly into the html to be rendered since CSS is seemingly unable to catch the element tags rendered to the DOM after initial page load DOM rendering.
+// ***** TESTED NEW FORM METHOD (did not work even commenting out original code block immediately aboce - no idea why not.... ****)
+// const showSortForm = () => {
+//   let sortFormString = ``
+
+// ****** USER INPUT FORM *********
+// Form below includes name input validation throwing an error message if submitted blank. All styling was added directly into the html to be rendered since CSS is seemingly unable to catch the element tags rendered to the DOM after initial page load rendering.
 let sortFormString = "";
 sortFormString += `<form id="nameForm">
 <div class="mb-3">
@@ -107,7 +111,7 @@ sortFormString += `<form id="nameForm">
 </form>
 
 <div class="houseBorder" style="border: 10px solid darkgrey; margin: 10px">
-  <h3 id="filterHeader" style="text-align:center; font-size: 20px; font=font-family: 'Jost', sans-serif;
+  <h3 id="filterHeader" style="text-align:center; font-size: 10px, bold; font=font-family: 'Jost', sans-serif;
   font-family: 'Oswald', sans-serif;
   font-family: 'PT Sans', sans-serif;
   font-family: 'Shadows Into Light', cursive; margin-top: 2rem">Filter Students</h3>
@@ -115,11 +119,11 @@ sortFormString += `<form id="nameForm">
   font-family: 'Oswald', sans-serif;
   font-family: 'PT Sans', sans-serif;
   font-family: 'Shadows Into Light', cursive;" role="group" aria-label="Basic mixed styles example">
-    <button type="button" class="btn btn-secondary">All</button>
-    <button type="button" class="btn btn-danger">Gryffindor</button>
-    <button type="button" class="btn btn-warning">Hufflepuff</button>
-    <button type="button" class="btn btn-primary">Ravenclaw</button>
-    <button type="button" class="btn btn-success">Slytherin</button>
+    <button type="button" class="btn btn-secondary" id="all">All</button>
+    <button type="button" class="btn btn-danger" id="gryffindor">Gryffindor</button>
+    <button type="button" class="btn btn-warning" id="hufflepuff">Hufflepuff</button>
+    <button type="button" class="btn btn-primary" id="ravenclaw">Ravenclaw</button>
+    <button type="button" class="btn btn-success" id="slytherin">Slytherin</button>
   </div>
 </div>`
 
@@ -127,6 +131,7 @@ showSortForm.addEventListener('click', (e) => {
   revealSortForm("#studentSortForm", sortFormString);
 });
 
+// ******** RENDER STUDENT CARDS *******
 const showStudentCards = document.querySelector('#sortButton');
 const revealStudentCards = (divId, htmlToRender) => {
   const formDiv = document.querySelector(divId);
@@ -150,6 +155,13 @@ for (const student of students) {
 renderToDom("#studentCards", studentCardString);
 };
 
+// ***** FUNCTION TO RENDER STUDENT CARDS UPON SORT SUBMIT ******
+// **********  NOT WORKING - NOT SURE WHY ********
+// showStudentCards.addEventListener('click', (e) => {
+//   revealStudentCards("#studentCards", studentCardString);
+// });
+
+// ********* RENDER EXPELLED STUDENT CARDS *******
 const showExpelledCards = document.querySelector('#sortButton');
 const revealExpelledCards = (divId, htmlToRender) => {
   const formDiv = document.querySelector(divId);
@@ -172,6 +184,77 @@ for (const student of students) {
 </div>`;
 renderToDom("#expelledCards", expelledCardsString);
 };
+
+
+// ******* FILTER FUNCTION & BUTTONS w/ EVENT LISTENERS *******
+const filter = (array, filterString) => {
+  const sortedFilterArray = [];
+  for(const student of array) {
+    if(student.house === filterString){
+      sortedFilterArray.push(student);
+    }
+  }
+  return sortedFilterArray;
+};
+
+const filterButtons = () => {
+  const showAllStudents = document.querySelector("#all");
+  const showAllGryffindor = document.querySelector("#gryffindor");
+  const showAllHufflepuff = document.querySelector("#hufflepuff");
+  const showAllRavenclaw = document.querySelector("#ravenclaw");
+  const showAllSlytherin = document.querySelector("#slytherin");
+
+  showAllStudents.addEventListener('click', () => revealStudentCards(students));
+
+  showAllGryffindor.addEventListener('click', () => {
+    const allGryffindor = filter(students, "Gryffindor");
+    revealStudentCards(allGryffindor);
+  });
+
+  showAllHufflepuff.addEventListener('click', () => {
+    const allHufflepuff = filter(students, "Hufflepuff");
+    revealStudentCards(allHufflepuff);
+  });
+
+  showAllRavenclaw.addEventListener('click', () => {
+    const allRavenclaw = filter(students, "Ravenclaw");
+    revealStudentCards(allRavenclaw);
+  });
+
+  showAllSlytherin.addEventListener('click', () => {
+    const allSlytherin = filter(students, "Slytherin");
+    revealStudentCards(allSlytherin);
+  });
+};
+
+
+
+//NOT WORKING - NOT SURE WHY *****
+// showExpelledCards.addEventListener('click', (e) => {
+//   revealExpelledCards("#expelledCards", expelledCardsString);
+// });
+
+
+//****NON-WORKING CODE TO CREATE NEW STUDENT**********
+// const createNewStudent = document.querySelector("#nameForm");
+
+// const createStudent = (e) => {
+//   e.preventDefault();
+//   const newStudentObj = {
+//     id: students.length +1,
+//     name: document.querySelector("#nameForm").value,
+//     house: document.querySelector
+//   }
+
+// }
+
+// FINAL FUNCTION FOR CLEANER CODE -> INIT
+// const init = () => {
+//   welcome();
+
+//   // events(); // ALWAYS LAST
+// }
+// init();
 
 
 //******* CURRENT CODE LINE BREAK - NO ACTIVE CODE BELOW THIS LINE ********
