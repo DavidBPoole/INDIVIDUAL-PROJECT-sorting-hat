@@ -1,26 +1,24 @@
-/* This was an alernate, but incorrect method to have the form hidden initially: */
-/* #form {
-  visibility: hidden;
-} */
+body {
+  background-image:url("https://wallpaperaccess.com/full/6510081.jpg");
+  /* Alternate background below /*
+  /* background-image:url("https://wallpapers.com/images/hd/magical-night-sky-with-ray-of-light-h8mff5a7ec2p6v86.jpg"); */
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  scale: 80%;
+}
 
 .navigationBar {
-  font-family: 'Jost', sans-serif;
-  font-family: 'Oswald', sans-serif;
-  font-family: 'PT Sans', sans-serif;
-  font-family: 'Shadows Into Light', cursive;
+  opacity: 50%;
 }
-.card {
+
+.Introduction {
   text-align: center;
-  font-family: 'EB Garamond', serif;
-  font-family: 'Jost', sans-serif;
-  font-family: 'Oswald', sans-serif;
-  font-family: 'PT Sans', sans-serif;
-  font-family: 'Shadows Into Light', cursive;
 }
 
 .card-header {
-  font-weight: em;
-  font-size: 2rem;
+  font-weight: bold;
+  font-size: 4.2rem;
   color: cadetblue ;
   font-family: 'EB Garamond', serif;
   font-family: 'Jost', sans-serif;
@@ -29,9 +27,75 @@
   font-family: 'Shadows Into Light', cursive;
 }
 
+#welcome {
+  font-size: 1.5rem;
+}
+
+#filterHeader {
+  color:azure;
+  font-size: 3.5rem;
+  text-shadow:
+  0 0 4px #fff,
+  0 0 11px #fff,
+  0 0 19px #fff,
+  0 0 40px rgb(181, 243, 255),
+  0 0 80px rgb(219, 217, 218),
+  0 0 90px rgb(213, 208, 210),
+  0 0 100px rgb(143, 240, 240),
+  0 0 150px rgb(0, 225, 255);
+}
+
+#inputNewStudent {
+  font-size: 1.5rem;
+}
+
+#all, #gryffindor, #hufflepuff, #ravenclaw, #slytherin {
+  font-size: 2rem;
+}
+
+#firstYears {
+  color: azure;
+  position: fixed left;
+  font-family: 'EB Garamond', serif;
+  font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
+  text-shadow:
+  0 0 4px #fff,
+  0 0 11px #fff,
+  0 0 19px #fff,
+  0 0 40px rgb(181, 243, 255),
+  0 0 80px rgb(219, 217, 218),
+  0 0 90px rgb(213, 208, 210),
+  0 0 100px rgb(143, 240, 240),
+  0 0 150px rgb(0, 225, 255);
+}
+
+#voldArmy {
+  color:rgb(255, 20, 20);
+  font-size: 2rem;
+  text-align: right;
+  position: fixed right;
+  font-family: 'EB Garamond', serif;
+  font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
+  text-shadow:
+  0 0 4px #fff,
+  0 0 11px #fff,
+  0 0 19px #fff,
+  0 0 40px rgb(255, 0, 76),
+  0 0 80px rgb(255, 0, 89),
+  0 0 90px rgb(255, 0, 89),
+  0 0 100px rgb(255, 0, 55),
+  0 0 150px rgb(255, 0, 43);
+}
+
 .card-title {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
   font-family: 'EB Garamond', serif;
   font-family: 'Jost', sans-serif;
   font-family: 'Oswald', sans-serif;
@@ -40,21 +104,48 @@
 }
 
 .card-text {
-  font-weight: bold;
-}
-
-#sortButton {
-  text-align: center;
+  font-size: 20px;
+  weight: bold;
+  font-family: 'EB Garamond', serif;
   font-family: 'Jost', sans-serif;
   font-family: 'Oswald', sans-serif;
   font-family: 'PT Sans', sans-serif;
   font-family: 'Shadows Into Light', cursive;
 }
 
-.houses {
-  margin: 50px;
-  /* color: rgb(0, 128, 255) */
+.flex-container {
+  display: flex;
+  justify-content: center;
+  font-size: 5rem;
+  /* border: 1px solid azure; */
 }
+
+.flex-child-1 {
+  flex: 1;
+  margin-right: 50px;
+  max-width: 50%;
+  /* border: 1px solid azure; */
+}  
+
+.flex-child-2 {
+  margin-left: 50px;
+  max-width: 50%;
+  /* border: 1px solid azure; */
+} 
+
+/* ******* UNUSED STYLES BELOW ******* /*
+/* #sortButton {
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
+} */
+
+/* .houses {
+  margin: 50px;
+  color: rgb(0, 128, 255)
+} */
 
 /* .sort-style-button {
   background-color: rgba(17, 17, 251, 0.827);
@@ -66,31 +157,31 @@
   margin-bottom: 50px;
 } */
 
-.card-container {
+/* .card-container {
   border: 10px solid darkgrey;
-  /* display: inline-block; */
+  display: inline-block; 
   margin: 5px;
   padding-top: 20px;
-  /* max-width: 100%; */
-}
+  max-width: 100%;
+} */
 
-#studentCards {
+/* #studentCards {
   background-color: white;
   display: inline-block;
   border: 1px solid darkgrey;
   margin: 1%;
-  max-width: 50%;
-}
+  width: 100%;
+} */
 
-#expelledCards {
+/* #expelledCards {
   background-color: black;
   display: inline-block;
   border: 1px solid darkgrey;
   margin: 1%;
-  max-width: 50%;
-}
+  width: 100%;
+} */
 
-.first-year-house {
+/* .first-year-house {
   display: flex;
   justify-content: left;
 }
@@ -98,7 +189,7 @@
 .expelled {
   display: flex;
   justify-content: right;
-}
+} */
 
 /* .container-max-widths {
   sm: 540px,
@@ -108,40 +199,40 @@
   xxl: 1320px
 }; */
 
-.container-group {
+/* .container-group {
   min-height: 300px;
   border: 1px solid darkgrey;
   margin: 3rem;
-}
+} */
 
-.firstYears {
+/* .firstYears {
   border: 1px solid darkgrey;
   /* min-height: 300px; */
-  width: 100%;
-  display: flex;
+  /* width: 100%;
+  display: inline-block;
   flex-flow: row wrap;
-  text-align: center;
-}
+  text-align: center; */
+/* }
 
-#firstYearsTitle {
+/* #firstYearsTitle {
   color: green;
 }
 
 .voldArmy {
   border: 1px solid darkgrey;
   /* min-height: 300px; */
-  width: 100%;
+  /* width: 100%;
   display: flex;
   flex-flow: row wrap;
-  text-align: center;
-}
+  text-align: center; */
+/* } */
 
-#voldemortArmy {
+/* #voldemortArmy {
   text-align: center;
   color: darkred;
-}
+} */ 
 
-.float-container {
+/* .float-container {
   border: 3px solid #fff;
   padding: 20px;
 }
@@ -153,5 +244,26 @@
   border: 5px solid darkgrey;
   text-align: center;
   margin-bottom: 1.5rem;
-  background-color: beige;;
-}  
+  background-color: beige;
+}   */
+
+/* .container-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(76, 18, 101);
+  margin: 0px 75px 0px 75px;
+  color: rgb(241, 241, 237);
+  font-family: 'Sarabun', sans-serif;
+  font-size: small;
+} */
+
+/* .container-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: rgb(241, 241, 237);
+  margin-left: 75px;
+  margin-right: 75px;
+  margin-bottom: 75px;
+} */
