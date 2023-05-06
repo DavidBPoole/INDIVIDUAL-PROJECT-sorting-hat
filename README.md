@@ -14,6 +14,7 @@ https://davidpoole-sorting-hat.netlify.app/
 
 Project Screenshot
 https://github.com/DavidBPoole/INDIVIDUAL-PROJECT-sorting-hat/issues/13#issue-1698400522
+https://user-images.githubusercontent.com/127453405/236595740-ffd8e9b4-5b3f-4f9f-a3e6-7f43812e518f.png
 
 Contributors
 - David Poole https://github.com/DavidBPoole
