@@ -1,4 +1,3 @@
-Project Name
 Hogwarts Sorting Hat [![Netlify Status](https://api.netlify.com/api/v1/badges/ecb1d3e0-5a3b-41e9-a780-1c9b3887ae21/deploy-status)](https://app.netlify.com/sites/davidpoole-sorting-hat/deploys)
 
 This application is an exercise designed to not only only teach and practice code, but to have fun mimicking the sorting hat scenes involving the new students at Hogwarts academy in the Harry Potter movie series. New students (the user) will submit their name and be randomly sorted into one of the houses of the franchise. Upon expulsion, they will default to Voldemort's army.
