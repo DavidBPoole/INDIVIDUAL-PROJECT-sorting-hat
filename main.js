@@ -1,42 +1,47 @@
-// Created STUDENT ARRAYS - REQUIRE 2 CATEGORIES:
-// Reference student list:
+// ************ REFERENCE STUDENT ARRAYS ***************
+// Object Array 
 const students = [
   {
     id: 1,
     name: "Harry Potter",
-    house: "Gryffindor"
+    house: "Gryffindor",
   },
   {
     id: 2,
     name: "Cho Chang",
-    house: "Ravenclaw"
+    house: "Ravenclaw",
   },
   {
     id: 3,
     name: "Cedric Diggory",
-    house: "Hufflepuff"
+    house: "Hufflepuff",
   },
   {
     id: 4,
     name: "Draco Malfoy",
-    house: "Slytherin"
-  },
+    house: "Slytherin",
+  }
 ];
 
 const expelledStudents = [];
 
-//****** MASTER RENDER TO DOM FUNCTION *********
+//  ***** MASTER FUNCTION TO RENDER TO DOM *****
+//The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content.
 const renderToDom = (divId, htmlToRender) => {
+  //renderToDom function takes in two parameters: "divId" and the "htmlToRender".
   const selectedDiv = document.querySelector(divId);
+  //HTML element is selected with an ID of "divId" passed as an argument using the "querySelector" method of the document object, and assigns it to the variable "selectedDiv".
   selectedDiv.innerHTML = htmlToRender;
-};
+  //This is setting the "innerHTML" of the "selectedDiv" element to the "htmlToRender" argument passed to the "renderToDom" function which replaces any HTML content already inside the selected element with the new html content. It reassigns new html to the innerHTML of the selectedDiv.
+}
 
-//******** HOME PAGE WELCOME MESSAGE - Renders on load *******
+// ********* HOME PAGE ************
 const welcome = () => {
-  let welcomeString = `<div class="navigationBar">
+  let welcomeString = `
+<div class="navigationBar">
   <nav class="navbar bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Sorting Hat</a>
+      <a class="navbar-brand" style="color: white" href="#">Sorting Hat</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -46,10 +51,10 @@ const welcome = () => {
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Students</a>
+            <a class="nav-link" id="navStudents" href="#">Students</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Expelled</a>
+            <a class="nav-link" id="nav-expelled" href="#">Expelled</a>
           </li>
         </ul>
         <span class="navbar-text">
@@ -64,58 +69,115 @@ const welcome = () => {
     <div class="card-header">
       Welcome to Hogwarts School of Wizardry
     </div>
-    <div class="card-body-greeting" style="border: 10px solid darkgrey; margin: 10px">
+    <div class="card-body-greeting" style="margin: 10px">
       <h5 class="card-title">Assignment System</h5>
-      <p class="card-text">Welcome aspiring students! Please click the button below to begin the initation and House assignment process..</p>
+      <p class="card-text" id="welcome">Welcome aspiring students! Please click the button below to begin the initation and House assignment process..</p>
       <a href="#" class="btn btn-primary" id="showForm" style="margin-bottom: 10px">Access Sorting Hat</a>
     </div>
   </div>
 </div>`;
   renderToDom("#welcome", welcomeString);
 }
-welcome()
 
-//  ******** FORM BUTTON CONSOLE CLICK TEST ************
-const showFormButton = document.querySelector("#showForm");
-showFormButton.addEventListener('click', accessSortForm);
-
-function accessSortForm(event) {
-  console.log('Form Button Clicked');
-}
-
-// ****** UNHIDE SORT FORM FUNCTION *******
-const showSortForm = document.querySelector('#showForm');
-const revealSortForm = (divId, htmlToRender) => {
-  const formDiv = document.querySelector(divId);
-  formDiv.innerHTML = htmlToRender;
+// ***** STUDENT CARDS TITLE *****
+const studentTitle = () => {
+  let domString = `<h1 style="font-size: 4rem">First Year Students</h1>`;
+  renderToDom('#firstYears', domString);
 };
 
-// ***** TESTED NEW FORM METHOD (did not work even commenting out original code block immediately aboce - no idea why not.... ****)
-// const showSortForm = () => {
-//   let sortFormString = ``
+// ***** EXPELLED STUDENTS CARDS *****
+const expelledTitle = () => {
+  let domString = `<h1 style="font-size: 4rem">Voldemort's Army</h1>`;
+  renderToDom(`#voldArmy`, domString);
+};
 
-// ****** USER INPUT FORM *********
-// Form below includes name input validation throwing an error message if submitted blank. All styling was added directly into the html to be rendered since CSS is seemingly unable to catch the element tags rendered to the DOM after initial page load rendering.
-let sortFormString = "";
-sortFormString += `<form id="nameForm">
-<div class="mb-3">
-  <label for="student-name" class="form-name"></label>
-  <input type="text" class="form-control" id="validation" value="" required style="max-width:25%; margin:auto; font=font-family: 'Jost', sans-serif;
-  font-family: 'Oswald', sans-serif;
-  font-family: 'PT Sans', sans-serif;
-  font-family: 'Shadows Into Light', cursive;" placeholder="Enter First Year's Name" aria-describedby="studentName">
-  <div id="emailHelp" class="form-text"></div>
-</div>
+// ***** USER NAME INPUT FORM *****
+const studentSortForm = () => {
+  let domString = `
+  <form id="nameForm">
+  <div class="mb-3">
+    <label for="student-name" class="form-name"></label>
+    <input type="text" class="form-control" id="inputNewStudent" id="validation" value="" required style="max-width:25%; margin:auto; font=font-family: 'Jost', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'PT Sans', sans-serif;
+    font-family: 'Shadows Into Light', cursive;" placeholder="Enter First Year's Name" aria-describedby="studentName">
+    <div id="emailHelp" class="form-text"></div>
+  </div>
+  <button type="submit" class="row d-flex justify-content-center align-content-center"  class="sortFilterButton" id="sortButton" style="margin: auto; background-color: rgb(0, 128, 255); color: white; border-color: rgb(0, 128, 255); border-radius: 5px; ">Sort</button>
+  </form>
+  <div class="houseBorder"; margin: 10px">
+    <div class="btn-group" class="houses" style="display:flex; justify-content: center; margin-left: 50px; margin-right: 50px; margin-bottom: 10px;  font=font-family: 'Jost', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'PT Sans', sans-serif;
+    font-family: 'Shadows Into Light', cursive;" role="group" aria-label="Basic mixed styles example">
+    </div>
+  </div>`;
+    renderToDom('#studentSortForm', domString);
+};
 
-<button type="submit" class="row d-flex justify-content-center align-content-center"  class="sortFilterButton" id="sortButton" style="margin: auto; background-color: rgb(0, 128, 255); color: white; margin-bottom: 10px; border-color: rgb(0, 128, 255); border-radius: 5px; ">Sort</button>
-</form>
+//******** STUDENT CARDS "for of loop" *******
+const showStudentCards = (array) => {
+  let domString = "";
+  for (student of array) {
+    domString += `
+  <div class="card mb-3" style="display: inline-block; max-width: 50%;">
+    <div class="row g-0">
+      <div class="col-md-4"></div>
+        <div class="card-body">
+          <p class="card-text" style="font-size: 2rem">${student.name}</p>
+          <p class="card-text" style="font-size: 2rem">${student.house}</p>
+          <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+  }
+  renderToDom("#studentCards", domString);
+};
 
-<div class="houseBorder" style="border: 10px solid darkgrey; margin: 10px">
+//********* EXPELLED STUDENT CARDS "for of loop" **********
+const showExpelledCards = (array) => {
+  let domString = "";
+  for (student of array) {
+    domString += `
+  <div class="card mb-3" style="display: inline-block; background-color: darkred; font-color: azure">
+    <div class="row g-0">
+      <div class="col-md-4">
+      </div>
+        <div class="card-body">
+          <p class="card-text" style="color: azure; font-size: 2rem">${student.name}</p>
+          <p class="card-text" style="color: azure; font-size: 2rem">${student.house}</p>
+          <button class="btn btn-danger" id="delete--${student.id}">Expelled</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+  }
+  renderToDom("#expelledCards", domString);
+};
+
+// ****** EXPELLED STUDENT CARDS FUNCTION ******
+const expelledStudentsFunction = document.querySelector("#studentCards");
+
+expelledStudentsFunction.addEventListener('click', (e) => {
+  // alert(e.target.id);
+  const [, id] = e.target.id.split("--");
+  const index = students.findIndex(student => student.id === Number(id));
+  expelledStudents.push(...students.splice(index, 1));
+  showStudentCards(students);
+  showExpelledCards(expelledStudents);
+});
+
+// ******** FILTER HOUSE BUTTONS *********
+const filterHouseButtons = () => {
+  let domString = `
+<div class="houseBorder" style= margin: 10px">
   <h3 id="filterHeader" style="text-align:center; font-size: 10px, bold; font=font-family: 'Jost', sans-serif;
   font-family: 'Oswald', sans-serif;
   font-family: 'PT Sans', sans-serif;
   font-family: 'Shadows Into Light', cursive; margin-top: 2rem">Filter Students</h3>
-  <div class="btn-group" class="houses" style="display:flex; justify-content: center; margin-left: 50px; margin-right: 50px; margin-bottom: 10px; font=font-family: 'Jost', sans-serif;
+</div>
+<div class="btn-group" class="houses" style="display:flex; justify-content: center; margin-left: 50px; margin-right: 50px; margin-bottom: 10px; font=font-family: 'Jost', sans-serif;
   font-family: 'Oswald', sans-serif;
   font-family: 'PT Sans', sans-serif;
   font-family: 'Shadows Into Light', cursive;" role="group" aria-label="Basic mixed styles example">
@@ -124,229 +186,126 @@ sortFormString += `<form id="nameForm">
     <button type="button" class="btn btn-warning" id="hufflepuff">Hufflepuff</button>
     <button type="button" class="btn btn-primary" id="ravenclaw">Ravenclaw</button>
     <button type="button" class="btn btn-success" id="slytherin">Slytherin</button>
-  </div>
-</div>`
-
-showSortForm.addEventListener('click', (e) => {
-  revealSortForm("#studentSortForm", sortFormString);
-});
-
-// ******** RENDER STUDENT CARDS *******
-const showStudentCards = document.querySelector('#sortButton');
-const revealStudentCards = (divId, htmlToRender) => {
-  const formDiv = document.querySelector(divId);
-  formDiv.innerHTML = htmlToRender;
-};
-
-let studentCardString = "";
-for (const student of students) {
-  studentCardString += `<div class="card mb-3" style="display: inline-block; max-width: 50%">
-  <div class="row g-0">
-    <div class="col-md-4">
-    </div>
-      <div class="card-body">
-        <p class="card-text">${student.name}</p>
-        <p class="card-text">${student.house}</p>
-        <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
-      </div>
-    </div>
-  </div>
 </div>`;
-renderToDom("#studentCards", studentCardString);
+  renderToDom("#filterHouseButtons", domString);
 };
 
-// ***** FUNCTION TO RENDER STUDENT CARDS UPON SORT SUBMIT ******
-// **********  NOT WORKING - NOT SURE WHY ********
-// showStudentCards.addEventListener('click', (e) => {
-//   revealStudentCards("#studentCards", studentCardString);
-// });
+//Function that takes an array and a value as arguments, in this case the value is "houseString". The function will filter through an array of objects, in this case the object array is "students", based on the selected value of "house" returning a newly created array of objects only containing the matching value selected to filter, "house". Another way of writing this filter is:
+//function filter(array, value) {
+//  return array.filter(item => item.house === value);  
+//};
+//array.filter method creates a new array with all elements clearing the function's test parameters. This test is taking an item from the array and checking to see if the house property is equal to the given value. If they match, the item is added to the new array being returned by the filter() method.
 
-// ********* RENDER EXPELLED STUDENT CARDS *******
-const showExpelledCards = document.querySelector('#sortButton');
-const revealExpelledCards = (divId, htmlToRender) => {
-  const formDiv = document.querySelector(divId);
-  formDiv.innerHTML = htmlToRender;
-};
-
-let expelledCardsString = "";
-for (const student of students) {
-  expelledCardsString += `<div class="card mb-3" style="display: inline-block">
-  <div class="row g-0">
-    <div class="col-md-4">
-    </div>
-      <div class="card-body">
-        <p class="card-text">${student.name}</p>
-        <p class="card-text">${student.house}</p>
-        <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
-      </div>
-    </div>
-  </div>
-</div>`;
-renderToDom("#expelledCards", expelledCardsString);
-};
-
-
-// ******* FILTER FUNCTION & BUTTONS w/ EVENT LISTENERS *******
-const filter = (array, filterString) => {
-  const sortedFilterArray = [];
+const filter = (array, houseString) => {
+  const filteredStudentArray = [];
+  // **** for of loop requires the name of the array "object" to be passed in with the structure it is within, which is an "array" not the actual name of the array so its passed "array" instead of "student of students" as evidenced below this line:
   for(const student of array) {
-    if(student.house === filterString){
-      sortedFilterArray.push(student);
+    if(student.house === houseString){
+      filteredStudentArray.push(student);
     }
   }
-  return sortedFilterArray;
+    console.log(filteredStudentArray);
+  return filteredStudentArray;
 };
 
 const filterButtons = () => {
-  const showAllStudents = document.querySelector("#all");
-  const showAllGryffindor = document.querySelector("#gryffindor");
-  const showAllHufflepuff = document.querySelector("#hufflepuff");
-  const showAllRavenclaw = document.querySelector("#ravenclaw");
-  const showAllSlytherin = document.querySelector("#slytherin");
+  const showAll = document.querySelector("#all");
+  //html element ID "all" is selected and assigned to variable "showAll" with querySelector method of document object. The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The querySelector method allows the targeting of an ID tag "#" with the specific ID name assigned to it.
+  const showGryffindor = document.querySelector("#gryffindor");
+  const showHufflepuff = document.querySelector("#hufflepuff");
+  const showRavenclaw = document.querySelector("#ravenclaw");
+  const showSlytherin = document.querySelector("#slytherin");
 
-  showAllStudents.addEventListener('click', () => revealStudentCards(students));
+  showAll.addEventListener('click', () => showStudentCards(students));
+  //An event condition or 'listener' is assigned to the variable "showAll" representing the "all" element triggering a callback function upon click of the button.
 
-  showAllGryffindor.addEventListener('click', () => {
-    const allGryffindor = filter(students, "Gryffindor");
-    revealStudentCards(allGryffindor);
+  showGryffindor.addEventListener('click', () => {
+    const showAllGryffindor = filter(students, "Gryffindor");
+    //console log is added on this function to reveal that the cards are actually being called/filtered as expected, but they were not rendering due to an error in the parent filter function involving correct name/value pairs; "array".
+    console.log(showAllGryffindor);
+    showStudentCards(showAllGryffindor);
   });
 
-  showAllHufflepuff.addEventListener('click', () => {
-    const allHufflepuff = filter(students, "Hufflepuff");
-    revealStudentCards(allHufflepuff);
+  showHufflepuff.addEventListener('click', () => {
+    const showAllHufflepuff = filter(students, "Hufflepuff");
+    console.log(showAllHufflepuff);
+    showStudentCards(showAllHufflepuff);
   });
 
-  showAllRavenclaw.addEventListener('click', () => {
-    const allRavenclaw = filter(students, "Ravenclaw");
-    revealStudentCards(allRavenclaw);
+  showRavenclaw.addEventListener('click', () => {
+    const showAllRavenclaw = filter(students, "Ravenclaw");
+    console.log(showAllRavenclaw);
+    showStudentCards(showAllRavenclaw);
   });
 
-  showAllSlytherin.addEventListener('click', () => {
-    const allSlytherin = filter(students, "Slytherin");
-    revealStudentCards(allSlytherin);
+  showSlytherin.addEventListener('click', () => {
+    const showAllSlytherin = filter(students, "Slytherin");
+    console.log(showAllSlytherin);
+    showStudentCards(showAllSlytherin);
   });
 };
 
+//*********** CREATE NEW STUDENT FORM **********
+const createStudent = () => {
+  const studentForm = document.querySelector('form');
+//function targeting the input form on the DOM
+  const sortForm = (e) => {
+    // e.preventDefault();
+    //function below is generating a random integer between indexes 0 and 3.
+    const random = Math.floor(Math.random() * 4) +1;
 
+    let randomHouse = ""
+    switch (random) {
+      case 1:
+        randomHouse = "Gryffindor";
+        break;
+      case 2:
+        randomHouse = "Hufflepuff";
+        break;
+      case 3:
+        randomHouse = "Ravenclaw";
+        break;
+      case 4:
+        randomHouse = "Slytherin";
+        break; 
+    }
+    const newCreatedStudent = {
+      id: students.length +1,
+      name: document.querySelector("#inputNewStudent").value,
+      house: randomHouse,
+    }
+    // method .unshift will add newly created cards to the front while .push will 'push' to the end of the list.
+    students.unshift(newCreatedStudent);
+    // re-renders to the DOM the new cards
+    showStudentCards(students);
+  }
+  //The “#submit” button was formerly the “#sortButton” . I made it sortButton because I gave an ID to the button responsible for the click event, but apparently the instructors agreed it needed to be changed to the TYPE of button responsible instead, which was type=submit and so form reset required it as the location to listen for as seen below this line:
+  studentForm.addEventListener("submit", (e) => {
+    if (document.getElementById("inputNewStudent").value === "") {
+      // alert("You must enter a name to continue.");
+    } else {sortForm()};
+    e.preventDefault();
+    // Form reset MUST be named after the variable/const it was assigned  *******
+    studentForm.reset();
+  }); 
+};
 
-//NOT WORKING - NOT SURE WHY *****
-// showExpelledCards.addEventListener('click', (e) => {
-//   revealExpelledCards("#expelledCards", expelledCardsString);
-// });
+//function to initialize the welcome message
+const init = () => {
+  welcome(); 
+};
+init();
 
-
-//****NON-WORKING CODE TO CREATE NEW STUDENT**********
-// const createNewStudent = document.querySelector("#nameForm");
-
-// const createStudent = (e) => {
-//   e.preventDefault();
-//   const newStudentObj = {
-//     id: students.length +1,
-//     name: document.querySelector("#nameForm").value,
-//     house: document.querySelector
-//   }
-
-// }
-
-// FINAL FUNCTION FOR CLEANER CODE -> INIT
-// const init = () => {
-//   welcome();
-
-//   // events(); // ALWAYS LAST
-// }
-// init();
-
-
-//******* CURRENT CODE LINE BREAK - NO ACTIVE CODE BELOW THIS LINE ********
-
-
-// Console log to reveal sort button works (I guess this doesnt work because the button being tested for a click doesnt render until called with the prior button - I don't see why it wouldn't work if you click it after it's already rendered?..)
-// const showSortAssignment = document.querySelector("#sortButton");
-// showSortAssignment.addEventListener('click', sortAssignor);
-
-// function sortAssignor(event) {
-//   console.log('Student Sort Assignment Button Clicked');
-// };
-// const sortSubmitButton = document.querySelector("#submitStudent")
-
-
-// CODE BLOCK NOTES TO ASSIST IN PROJECT:
-
-// Reset code for name form:
-// form.reset();
-
-// const targetingApp = document.querySelector("#name-form");
-// console.log(targetingApp);
-
-// let formString = "";
-// for (const form of forms) {
-//   formString += `<form id="nameForm">
-//   <div class="mb-3">
-//     <label for="student-name" class="form-name">First Year's Name</label>
-//     <input type="name" class="form-control" id="exampleStudentName" aria-describedby="studentName">
-//     <div id="emailHelp" class="form-text"></div>
-//   </div>
-//   <button type="submit" class="btn btn-primary">Submit</button>
-// </form>`;
-// }
-
-// console.log(formString);
-// targetingApp.innerHTML = formString;
-
-//Master function to render html to DOM at the selectedDiv:
-// const renderToDom = (divId, html) => {
-//   const selectedDiv = document.querySelector(divId);
-//   selectedDiv.innerHTML = html;
-// }
-
-// const renderForm = (divId, html) => {
-
-// }
-// Reusable function to get the cards on the DOM
-// .forEach() loop example:
-// const renderStudents = (array) => {
-//   let refStudents = "";
-
-//   array.forEach((item) => {
-//     refStuff += card(item);
-//   });
-
-//   renderToDom("#cards", refStuff);
-// }
-
-//Example for of loop:
-// const renderStudents = (array,studentString) => {
-//   const typeArray = [];
- 
-//   for (const pet of array) {
-//     if (pet.type === typeString) {
-//       typeArray.push(pet);
-//     }
-//   }
-
-//   return typeArray;
-// };
-
-// const renderToDom = (divId, htmlToRender) => {
-//   const selectedDiv = document.querySelector(divId);
-//   // This variable tells the function to find all of the instances within the HTML of the specified ID passed through it:
-//   selectedDiv.innerHTML = htmlToRender;
-  // This statement takes the variable/method above and assigns the innerHTML method to it which enables the selected div to be assigned the html
-// };
-
-// Below is to render your JS HTML to the selected #app ID placeholder within the HTML. All functions needing to be dsiplayed on the DOM HTML must be within this JS file and pulled using querySelector() or getElementById()
-  // renderToDom("#app", domString);
-
-  // const startApp = () => {
-  //   // PUT ALL CARDS ON THE DOM
-  //   renderCards(studentList)
-  // };
-
-  // const showForm = document.querySelector("#nameForm");
-
-  // showForm.addEventListener("click", (e) => {
-  //   const studentForm = filter(pets, "cat");
-  //   cardsOnDom(cats);
-  // });
-
- 
+// called functions below:
+// ********** EVENT LISTENERS **********
+const sortButton = document.querySelector("#showForm");
+sortButton.addEventListener('click', (e) => {
+  studentTitle();
+  expelledTitle();
+  studentSortForm();
+  createStudent();
+  filterHouseButtons();
+  filterButtons();
+  showStudentCards(students);
+  showExpelledCards(expelledStudents);
+})
